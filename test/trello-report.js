@@ -30,9 +30,9 @@ describe("Generate a middleware", () => {
     }),
     it("Should create a card", done => {
       let trello = new trelloReport(config);
-      trello
-        .createCard("Tested 01")
-        .then((err, data) => console.log(err, data));
-      done();
+      trello.createCard("Tested 01").then((err, data) => {
+        if (err) return done(err);
+        done();
+      });
     });
 });
