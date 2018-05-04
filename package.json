@@ -10,7 +10,7 @@
     "build": "yarn test && ./node_modules/.bin/gulp",
     "test": "./node_modules/.bin/mocha",
     "test:coverage": "nyc ./node_modules/.bin/mocha",
-    "precommit": "pretty-quick --staged"
+    "precommit": "yarn test &&pretty-quick --staged"
   },
   "dependencies": {
     "chai": "4.1.2",
