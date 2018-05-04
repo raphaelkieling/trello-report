@@ -67,4 +67,10 @@ describe("Generate a middleware", () => {
     expect(trello.middleware()).to.be.a("function");
     done();
   });
+
+  it("Should return a function in Middleware", done => {
+    let trello = new trelloReport(config);
+    expect(trello.middleware()).to.be.a("function");
+    done();
+  });
 });
