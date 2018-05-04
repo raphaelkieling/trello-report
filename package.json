@@ -1,6 +1,9 @@
 {
   "name": "trello-report-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "engines": {
+    "node": ">=5.0.0"
+  },
   "main": "dist/trello_report.min.js",
   "repository": "https://github.com/raphaelkieling/trello-report",
   "author": "Raphael Kieling <raphael_kieling@hotmail.com>",
