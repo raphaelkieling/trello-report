@@ -39,9 +39,7 @@ TrelloReport.prototype.middleware = function() {
       console.log("Card sended to trello.");
     });
 
-    res.status(500).send({
-      error
-    });
+    next(err);
   };
 };
 

@@ -19,6 +19,6 @@ server.get("", async (req, res) => {
   }
 });
 
-server.use(trelloReportMiddleware.middleware);
+server.use(trelloReportMiddleware.middleware());
 
 server.listen(3000, () => console.log("listen 3000"));
