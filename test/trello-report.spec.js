@@ -47,17 +47,24 @@ describe("Generate a middleware", () => {
       } catch (e) {
         done();
       }
-    }),
-    it("Should error in create a card with null", done => {
-      let trello = new trelloReport(config);
-      try {
-        trello.createCard(123).then((err, data) => {
-          if (err) return done();
-
-          done("Passed");
-        });
-      } catch (e) {
-        done();
-      }
     });
+
+  it("Should error in create a card with null", done => {
+    let trello = new trelloReport(config);
+    try {
+      trello.createCard(123).then((err, data) => {
+        if (err) return done();
+
+        done("Passed");
+      });
+    } catch (e) {
+      done();
+    }
+  });
+
+  it("Should return a function in Middleware", done => {
+    let trello = new trelloReport(config);
+    expect(trello.middleware()).to.be.a("function");
+    done();
+  });
 });

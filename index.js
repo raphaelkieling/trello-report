@@ -13,7 +13,6 @@ const Trello = require("node-trello");
 function TrelloReport(config) {
   if (typeof config !== "object")
     throw new Error("Config TrelloReport not defined");
-
   if (!validParameter(config.your_key)("string"))
     throw new Error("YOUR_KEY not valid");
   if (!validParameter(config.token)("string"))
