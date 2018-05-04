@@ -5,6 +5,20 @@ Report messages to trello!
 ![Travis CI](https://travis-ci.org/raphaelkieling/trello-report.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/raphaelkieling/trello-report/badge.svg?branch=master)](https://coveralls.io/github/raphaelkieling/trello-report?branch=master)
 
+## Installation
+
+With **npm**
+
+```sh
+  npm install --save trello-report-js
+```
+
+With **yarn**
+
+```sh
+  yarn add --exact trello-report-js
+```
+
 ## Example with middleware and function createCard
 
 ```javascript
@@ -32,20 +46,6 @@ server.get("", async (req, res) => {
 server.use(trelloReportMiddleware.middleware);
 
 server.listen(3000, () => console.log("listen in 3000"));
-```
-
-## Installation
-
-With **npm**
-
-```sh
-  npm install --save trello-report-js
-```
-
-With **yarn**
-
-```sh
-  yarn add --exact trello-report-js
 ```
 
 ## Test
