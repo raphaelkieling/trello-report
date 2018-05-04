@@ -1,19 +1,19 @@
-const toLowercase = x => x.toLowerCase();
+const toLowercase = x => (validParameter(x)("string") ? x.toLowerCase() : "");
 const trim = x => x.trim();
-const checkMessageError = err =>
-  typeof err.message === "string" ? err.message : "Error in server";
+const getMessageError = err =>
+  validParameter(err)("object") && err.message
+    ? err.message
+    : "Error in server";
 
 const showErrorLog = errString => console.log(`[ ERROR ]`, errString.red);
 
-const validParameterConfig = parameter =>
-  parameter !== null &&
-  parameter !== undefined &&
-  typeof parameter === "string";
+const validParameter = parameter => type =>
+  parameter !== null && parameter !== undefined && typeof parameter === type;
 
 module.exports = {
   toLowercase,
   trim,
-  checkMessageError,
+  getMessageError,
   showErrorLog,
-  validParameterConfig
+  validParameter
 };

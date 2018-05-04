@@ -3,9 +3,9 @@ const colors = require("colors");
 const {
   toLowercase,
   trim,
-  checkMessageError,
+  getMessageError,
   showErrorLog,
-  validParameterConfig
+  validParameter
 } = require("./utils/utils");
 
 const Trello = require("node-trello");
@@ -14,10 +14,11 @@ function TrelloReport(config) {
   if (typeof config !== "object")
     throw new Error("Config TrelloReport not defined");
 
-  if (!validParameterConfig(config.your_key))
+  if (!validParameter(config.your_key)("string"))
     throw new Error("YOUR_KEY not valid");
-  if (!validParameterConfig(config.token)) throw new Error("TOKEN not valid");
-  if (!validParameterConfig(config.id_list))
+  if (!validParameter(config.token)("string"))
+    throw new Error("TOKEN not valid");
+  if (!validParameter(config.id_list)("string"))
     throw new Error("ID_LIST not valid");
 
   this.config(config);
@@ -32,7 +33,7 @@ TrelloReport.prototype.config = function(config) {
 
 TrelloReport.prototype.middleware = function() {
   return (err, req, res, next) => {
-    let error = _.pipe(checkMessageError, toLowercase)(err);
+    let error = _.pipe(getMessageError, toLowercase)(err);
     showErrorLog(error);
 
     this.createCard(error).then((err, data) => {
@@ -46,6 +47,9 @@ TrelloReport.prototype.middleware = function() {
 };
 
 TrelloReport.prototype.createCard = function(name) {
+  if (!validParameter(name)("string"))
+    throw new Error("Need name valid to create a card");
+
   return new Promise((resolve, reject) => {
     this.trello.post(
       "/1/cards",

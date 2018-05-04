@@ -28,11 +28,36 @@ describe("Generate a middleware", () => {
 
       done();
     }),
-    it("Should create a card", done => {
+    it("Should create a card with string", done => {
       let trello = new trelloReport(config);
-      trello.createCard("Tested 01").then((err, data) => {
+      trello.createCard("Tested").then((err, data) => {
         if (err) return done(err);
+
         done();
       });
+    }),
+    it("Should error in create a card with number", done => {
+      let trello = new trelloReport(config);
+      try {
+        trello.createCard(123).then((err, data) => {
+          if (err) return done();
+
+          done("Passed");
+        });
+      } catch (e) {
+        done();
+      }
+    }),
+    it("Should error in create a card with null", done => {
+      let trello = new trelloReport(config);
+      try {
+        trello.createCard(123).then((err, data) => {
+          if (err) return done();
+
+          done("Passed");
+        });
+      } catch (e) {
+        done();
+      }
     });
 });
