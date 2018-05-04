@@ -10,6 +10,7 @@
     "build": "yarn test && ./node_modules/.bin/gulp",
     "test": "./node_modules/.bin/mocha",
     "test:coverage": "nyc ./node_modules/.bin/mocha",
+    "coveralls": "./node_modules/.bin/coveralls",
     "precommit": "yarn test &&pretty-quick --staged"
   },
   "dependencies": {
