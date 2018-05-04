@@ -1,5 +1,5 @@
 const server = require("express")();
-const trelloReport = require("../index");
+const trelloReport = require("../lib/trello_report");
 
 let trelloReportMiddleware = new trelloReport({
   your_key: "65912710581be28db8a96148f71a38e9",
@@ -7,8 +7,16 @@ let trelloReportMiddleware = new trelloReport({
   id_list: "58619e1ec80002829728bfb3"
 });
 
-server.get("", (req, res) => {
-  throw new Error("Error created");
+server.get("", async (req, res) => {
+  try {
+    throw new Error("Server error");
+  } catch (e) {
+    trelloReportMiddleware
+      .createCard("Erro no get do software")
+      .then(console.log("Enviado um card"));
+
+    res.send("errooo");
+  }
 });
 
 server.use(trelloReportMiddleware.middleware);
