@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const trelloReport = require("../index");
+const trelloReport = require("../lib/trello_report");
 
 const config = {
   your_key: "65912710581be28db8a96148f71a38e9",

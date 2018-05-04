@@ -6,7 +6,7 @@ const {
   getMessageError,
   showErrorLog,
   validParameter
-} = require("./utils/utils");
+} = require("../utils/utils");
 
 const Trello = require("node-trello");
 
